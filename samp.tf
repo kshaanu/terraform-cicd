@@ -71,6 +71,10 @@ resource "aws_instance" "inst1" {
   }
   provisioner "remote-exec" {
       inline = [
+          "sudo apt update",
+          "sudo apt install software-properties-common -y",
+          "sudo apt-add-repository --yes --update ppa:ansible/ansible",
+          "sudo apt install ansible -y",
           "git clone https://github.com/kshaanu/terraform-cicd.git",
           "cd terraform-cicd/",
           "ansible-playbook ansjenk.yml"
