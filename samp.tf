@@ -71,15 +71,7 @@ resource "aws_instance" "inst1" {
   }
   provisioner "remote-exec" {
       inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -f",
-      "sudo apt-get upgrade -y",
-      "sudo apt-get update",
-      "sudo apt-get install openjdk-8-jdk -y",
-      "sudo apt-get install tomcat8 -y",
-      "sudo service tomcat8 start",
-      "wget https://qt-s3-new-testing.s3-us-west-2.amazonaws.com/gameoflife.war",
-      "sudo cp /home/ubuntu/gameoflife.war    /var/lib/tomcat8/webapps"
+      "ansible-playbook ansjenk.yml"
       ]
   }
 }
