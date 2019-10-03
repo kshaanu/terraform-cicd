@@ -6,13 +6,14 @@
     apt:
       name: apt-update
       update_cache: yes
-  - name: install package 
+  - name: install java 
     apt:
-      name: "{{ item }}"    
+      name: openjdk-8-jdk    
       state: present 
-    loop:
-      - openjdk-8-jdk
-      - tomcat8
+  - name: install tomcat8
+    apt:
+      name: tomcat8
+      state: present
     notify: 
       - start tomcat8
       - enable tomcat8
@@ -28,4 +29,10 @@
   - name: enable tomcat8
     service:
       name: tomcat8
-      enabled: yes        
+      enabled: yes
+  
+
+
+
+
+        
