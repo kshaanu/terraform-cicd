@@ -72,7 +72,7 @@ resource "aws_instance" "inst1" {
   provisioner "remote-exec" {
       inline = [
           "git clone https://github.com/kshaanu/terraform-cicd.git",
-          "cd terraform-cicd",
+          "cd terraform-cicd/",
           "ansible-playbook ansjenk.yml"
       ]
   }
