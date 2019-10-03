@@ -77,7 +77,7 @@ resource "aws_instance" "inst1" {
           "sudo apt install ansible -y",
           "git clone https://github.com/kshaanu/terraform-cicd.git",
           "cd terraform-cicd/",
-          "ansible-playbook ansjenk.yml"
+          "ansible-playbook ansjenk.yml -i localhost"
       ]
   }
 }
