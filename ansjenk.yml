@@ -1,0 +1,35 @@
+---
+- hosts : all
+  become : yes
+  tasks : 
+  - name : update node
+    apt :
+     name : apt-update
+     update_cache : yes
+  - name : install package 
+    apt :
+     name : "{{ item }}"    
+     state : present 
+     loop :
+      - openjdk-8-jdk
+      - tomcat8
+  - notify: 
+    - start tomcat8
+    - enable tomcat8
+  handlers :
+  - name : start tomcat8
+    service:
+        name : tomcat8
+        state: started 
+  - name : enable tomcat8
+    service:
+        name : tomcat8
+        enabled: yes
+  get_url:
+    url: https://qt-s3-new-testing.s3-us-west-2.amazonaws.com/gameoflife.war
+    dest: /var/lib/tomcat8/webapps
+
+
+
+
+        
